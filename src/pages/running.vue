@@ -13,18 +13,32 @@
       }
     },
     data() {
-      let nextWeek = this.week, nextNo = this.no + 1;
-      if ( nextNo === 4 ) {
-        nextNo = 1;
+      let nextWeek = this.week, nextTrainNo = this.no + 1;
+
+      if ( 1 === nextTrainNo ) {
         nextWeek += 1;
       }
-      const plans = plan13.plans[ nextWeek ][ nextNo - 1 ];
-      // todo 每天可能有多种训练方式
-      return {
+
+      const trains = plan13.plans[ nextWeek - 1 ][ nextTrainNo - 1 ];
+
+      const data = {
         nextWeek,
-        nextNo,
-        plan: plan13.plans[ nextWeek ]
+        nextTrainNo
       };
+
+      if ( trains.length === 1 ) {
+        data.train = trains[ 0 ];
+        data._jumpTo = '/running/start';
+      } else {
+        data.trains = trains;
+        data.train = null;
+        data._jumpTo = '/running/choose';
+      }
+
+      return data;
+    },
+    ready() {
+      this.$route.router.replace( this.$data._jumpTo );
     }
   };
 </script>

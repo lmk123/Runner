@@ -12,7 +12,10 @@ router.map( {
   '/running': {
     component: require( './running.vue' ),
     subRoutes: {
-      '/': {
+      '/choose': {
+        component: require( './running-choose.vue' )
+      },
+      '/start': {
         component: require( './running-start.vue' )
       },
       '/timer': {
