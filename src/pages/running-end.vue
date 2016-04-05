@@ -30,7 +30,6 @@
         this.setTrain( {
           week: this.$parent.nextWeek,
           no: this.$parent.nextTrainNo,
-          finished: true,
           date: Date.now()
         } );
         this.$route.router.go( '/' );
