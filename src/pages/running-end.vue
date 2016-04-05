@@ -1,7 +1,16 @@
 <template>
-  恭喜你完成今天的训练!现在请热身 5~10 分钟,让体温慢慢降下来.
-  todo 至少五分钟后才能点击按钮
-  <button @click="finish">完成训练</button>
+  <div class="content-block">
+    现在请热身 5~10 分钟,让体温慢慢降下来.
+  </div>
+  <div class="content-block-title">热身计时</div>
+  <div class="content-block">
+    <div class="content-block-inner">
+      <s-timer type="countup" auto v-ref:timer></s-timer>
+    </div>
+  </div>
+  <div class="content-block">
+    <input type="button" class="button" value="热身完成" @click="finish" />
+  </div>
 </template>
 
 <script type="text/babel">
@@ -11,8 +20,13 @@
     vuex: {
       actions: { setTrain }
     },
+    route: {
+      activate() {
+        this.$parent.title = '跑后热身';
+      }
+    },
     methods: {
-      finish() {
+      go() {
         this.setTrain( {
           week: this.$parent.nextWeek,
           no: this.$parent.nextTrainNo,
@@ -20,6 +34,19 @@
           date: Date.now()
         } );
         this.$route.router.go( '/' );
+      },
+
+      finish() {
+        const { timer } = this.$refs;
+        if ( timer.min < 5 ) {
+          timer.pause();
+          this.$root
+                  .confirm( '跑后热身至少持续 5 分钟,确认要去跑步吗?' )
+                  .then( this.go, timer.continue );
+        } else {
+          this.go();
+        }
+
       }
     }
   };

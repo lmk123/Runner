@@ -7,7 +7,6 @@
     </div>
     <div class="page-content">
       <div class="content-block">
-        <!--<div class="content-block-inner">-->
         <p v-if="week">
           <span v-if="lastest">
             你已完成 13 周训练计划,干的漂亮!
@@ -17,11 +16,10 @@
         <p v-else>
           你还没有开始训练,现在就开始吧!
         </p>
-        <!--</div>-->
       </div>
       <div class="content-block">
         <a class="button" v-if="!lastest" v-link="'/running'">开始训练</a>
-        <button class="button" v-if="week" @click="restart">重新开始</button>
+        <input type="button" class="button" value="重新开始" v-if="week" @click="confirmRestart" />
       </div>
     </div>
   </div>
@@ -40,6 +38,13 @@
       },
       actions: {
         restart
+      }
+    },
+    methods: {
+      confirmRestart() {
+        this.$root
+                .confirm( '你的训练进度将会被清除,此操作不可恢复.', '确定要重新开始吗?' )
+                .then( this.restart, ()=> {} );
       }
     },
     computed: {

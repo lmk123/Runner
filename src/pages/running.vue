@@ -14,8 +14,12 @@
     <div class="page-content">
       <div class="content-block">
         <div class="content-block-inner">
-          你正在进行第 {{nextWeek}} 周的第 {{nextTrainNo}} 次训练.
-          <s-train :train="train" v-if="train"></s-train>
+          <p>
+            你正在进行第 {{nextWeek}} 周的第 {{nextTrainNo}} 次训练.
+          </p>
+          <p v-if="train">
+            训练内容:<s-train :train="train" v-if="train"></s-train>
+          </p>
         </div>
       </div>
       <router-view></router-view>
