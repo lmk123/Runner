@@ -40,6 +40,7 @@
     },
     ready() {
       const { train } = this.$parent;
+      if ( !train ) { return; }
       const { steps } = train;
       const stepLength = steps.length;
       const { timer } = this.$refs;
