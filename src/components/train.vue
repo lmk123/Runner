@@ -1,7 +1,7 @@
 <template>
   <span v-for="step in train.steps">
   {{step.name}} {{step.time}} 分钟,
-</span>重复 {{train.repeat}} 次
+</span>共做 {{train.repeat}} 次
 </template>
 
 <script type="text/babel">

@@ -1,11 +1,25 @@
 <template>
-  当前进度:第 {{currentRepeat}} 次,{{$parent.train.steps[currentStep].name}} {{$parent.train.steps[currentStep].time}} 分钟,还剩
-  <s-timer v-ref:timer></s-timer>
-  <br>
-  <button v-show="paused" @click="continue">继续</button>
-  <button v-else @click="pause">暂停</button>
-  <button @click="stop">停止训练</button>
-  <a v-link="'/running/end'">若完成</a>
+  <div class="content-block-title">当前进度</div>
+  <div class="content-block">
+    <div class="content-block-inner">
+      第 {{currentRepeat}} 次,{{$parent.train.steps[currentStep].name}} {{$parent.train.steps[currentStep].time}} 分钟,还剩
+      <s-timer v-ref:timer></s-timer>
+    </div>
+  </div>
+  <div class="content-block">
+    <p v-show="paused">
+      <input type="button" class="button" value="继续" @click="continue" />
+    </p>
+    <p v-else>
+      <input type="button" class="button" value="暂停" @click="pause" />
+    </p>
+    <p>
+      <input type="button" class="button" value="停止训练" @click="stop" />
+    </p>
+    <p>
+      <a class="button" v-link="'/running/end'">跳过</a>
+    </p>
+  </div>
 </template>
 
 <script type="text/babel">
@@ -33,11 +47,9 @@
       },
       stop() {
         this.$refs.timer.pause();
-        if ( confirm( '确定要中止这次训练吗?' ) ) {
-          this.$route.router.go( '/' );
-        } else {
-          this.$refs.timer.continue();
-        }
+        this.$root
+                .confirm( '确定要中止这次训练吗?' )
+                .then( ()=>this.$route.router.go( '/' ), this.$refs.timer.continue );
       }
     },
     ready() {
