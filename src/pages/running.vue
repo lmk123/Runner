@@ -42,6 +42,9 @@
 
       if ( 1 === nextTrainNo ) {
         nextWeek += 1;
+      } else if ( 4 === nextTrainNo ) {
+        nextTrainNo = 1;
+        nextWeek += 1;
       }
 
       const trains = plan13.plans[ nextWeek - 1 ][ nextTrainNo - 1 ];
