@@ -4,7 +4,7 @@
 
 <script type="text/babel">
   import { week, no } from '../vuex/getters';
-  import plan13 from '../plans/13';
+  import plan13 from '../others/plan';
   export default {
     vuex: {
       getters: {
