@@ -1,4 +1,5 @@
 <template>
+  你正在进行第 {{nextWeek}} 周的第{{nextTrainNo}}次训练.<br>
   <router-view></router-view>
 </template>
 

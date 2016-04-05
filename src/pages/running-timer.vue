@@ -1,5 +1,4 @@
 <template>
-  第 {{$parent.nextWeek}} 周第 {{$parent.nextTrainNo}} 次训练:
   <s-train :train="$parent.train"></s-train>
   <br>
   当前进度:第 {{currentRepeat}} 次,{{$parent.train.steps[currentStep].name}} {{$parent.train.steps[currentStep].time}} 分钟,还剩
