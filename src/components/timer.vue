@@ -29,13 +29,23 @@
         return zero( this.min ) + ':' + zero( this.sec );
       }
     },
+    props: {
+      type: {
+        type: String,
+        default: 'countdown'
+      },
+      auto: {
+        type: Boolean,
+        default: false
+      }
+    },
     methods: {
       /**
        * 设定初始时间并开始计时
        * @param {Number} min - 初始分钟数
        * @param {Number} [sec] - 初始秒数
        */
-      start( min, sec = 0 ) {
+      start( min = 0, sec = 0 ) {
         this.min = min;
         this.sec = sec;
         this.pause();
@@ -51,10 +61,9 @@
       },
 
       /**
-       * 继续计时
+       * 倒计时
        */
-      continue() {
-        if ( this.$_timeId ) { return; }
+      continueCountdown() {
         this.$_timeId = setInterval( ()=> {
           this.sec -= 1;
           if ( this.sec === -1 ) {
@@ -70,6 +79,31 @@
       },
 
       /**
+       * "正"计时
+       */
+      continueCountup() {
+        this.$_timeId = setInterval( ()=> {
+          this.sec += 1;
+          if ( this.sec === 60 ) {
+            this.min += 1;
+            this.sec = 0;
+          }
+        }, 1000 );
+      },
+
+      /**
+       * 继续计时
+       */
+      continue() {
+        if ( this.$_timeId ) { return; }
+        if ( this.type === 'countdown' ) {
+          this.continueCountdown();
+        } else {
+          this.continueCountup();
+        }
+      },
+
+      /**
        * 停止计时
        */
       stop() {
@@ -77,6 +111,14 @@
         this.min = 0;
         this.sec = 0;
       }
+    },
+    ready() {
+      if ( this.auto ) {
+        this.start();
+      }
+    },
+    beforeDestroy() {
+      this.pause();
     }
   };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  {{train.name}}: <span v-for="step in train.steps">
+  <span v-for="step in train.steps">
   {{step.name}} {{step.time}} 分钟,
 </span>重复 {{train.repeat}} 次
 </template>

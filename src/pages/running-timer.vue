@@ -1,6 +1,4 @@
 <template>
-  <s-train :train="$parent.train"></s-train>
-  <br>
   当前进度:第 {{currentRepeat}} 次,{{$parent.train.steps[currentStep].name}} {{$parent.train.steps[currentStep].time}} 分钟,还剩
   <s-timer v-ref:timer></s-timer>
   <br>
@@ -12,6 +10,11 @@
 
 <script type="text/babel">
   export default {
+    route: {
+      activate() {
+        this.$parent.title = '跑步吧!';
+      }
+    },
     data() {
       return {
         paused: false,

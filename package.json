@@ -11,7 +11,8 @@
   "dependencies": {
     "vue": "^1.0.18",
     "vue-router": "^0.7.11",
-    "vuex": "^0.6.2"
+    "vuex": "^0.6.2",
+    "framework7": "^1.4.2"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
