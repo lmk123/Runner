@@ -5,7 +5,7 @@
 <script type="text/babel">
   import store from './vuex';
   export default {
-    store ,
-    replace : false
+    store,
+    replace: false
   };
 </script>

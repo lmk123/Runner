@@ -44,6 +44,12 @@ module.exports = {
       }
     ]
   },
+  vue: {
+    loaders: {
+      css: ExtractTextPlugin.extract( 'css-loader?sourceMap' ),
+      sass: ExtractTextPlugin.extract( 'css-loader?sourceMap!sass-loader?sourceMap' )
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin( {
       template: './src/index.html'
