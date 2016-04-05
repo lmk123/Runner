@@ -7,5 +7,12 @@ import state from './state';
 import * as mutations from './mutations';
 export default new Vuex.Store( {
   state,
-  mutations
+  mutations,
+  middlewares: [
+    {
+      onMutation( mutation, state ) {
+        localStorage.state = JSON.stringify( state );
+      }
+    }
+  ]
 } );
