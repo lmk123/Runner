@@ -1,3 +1,3 @@
-export function addCount( state , amount ) {
-  state.count += amount;
+export function setTrain( state, train ) {
+  Object.assign( state, train );
 }

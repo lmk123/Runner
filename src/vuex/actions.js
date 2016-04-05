@@ -1,3 +1,3 @@
-export function addOne( { dispatch } ) {
-  dispatch( 'addCount' , 1 );
+export function setTrain( { dispatch }, train ) {
+  dispatch( 'setTrain', train );
 }

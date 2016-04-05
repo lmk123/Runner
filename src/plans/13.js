@@ -15,10 +15,10 @@ export default {
             },
             {
               name: '走路',
-              time: 2
+              time: 1
             }
           ],
-          repeat: 8
+          repeat: 1
         },
         {
           name: '轻松选项',

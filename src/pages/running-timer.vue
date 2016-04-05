@@ -19,9 +19,24 @@
       };
     },
     ready() {
+      const { train } = this.$parent;
+      const { steps } = train;
+      const stepLength = steps.length;
       const { timer } = this.$refs;
 
-      timer.start( 2 );
+      timer.start( steps[ this.currentStep ].time );
+      timer.$on( 'end', ()=> {
+        this.currentStep += 1;
+        if ( this.currentStep === stepLength ) {
+          this.currentRepeat += 1;
+          this.currentStep = 0;
+        }
+        if ( this.currentRepeat > train.repeat ) {
+          this.$route.router.go( '/running/end' );
+        } else {
+          timer.start( steps[ this.currentStep ].time );
+        }
+      } );
     }
   };
 </script>
