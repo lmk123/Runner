@@ -5,7 +5,7 @@
     "url": "git+https://github.com/lmk123/Runner.git"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --open --config build/webpack.dev.config.js",
+    "start": "webpack-dev-server --inline --open --config build/webpack.dev.config.js",
     "build": "rm -rf ./dist && webpack --config build/webpack.build.config.js"
   },
   "dependencies": {
