@@ -1,12 +1,10 @@
 <template>
-  <div class="page">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="center">Runner</div>
-      </div>
-    </div>
-    <div class="page-content">
-      <div class="content-block">
+  <f7-page>
+    <f7-navbar type="fixed">
+      <span slot="center">Runner</span>
+    </f7-navbar>
+    <f7-page-content>
+      <f7-content-block>
         <p v-if="week">
           <span v-if="lastest">
             你已完成 13 周训练计划,干的漂亮!
@@ -16,15 +14,15 @@
         <p v-else>
           你还没有开始训练,现在就开始吧!
         </p>
-      </div>
-      <div class="content-block">
+      </f7-content-block>
+      <f7-content-block>
         <p>
           <a class="button" v-if="!lastest" v-link="'/running'">开始训练</a>
         </p>
         <input type="button" class="button" value="重新开始" v-if="week" v-touch:tap="confirmRestart" />
-      </div>
-    </div>
-  </div>
+      </f7-content-block>
+    </f7-page-content>
+  </f7-page>
 </template>
 
 <script type="text/babel">
@@ -44,7 +42,7 @@
     },
     methods: {
       confirmRestart() {
-        this.$root
+        this.$root.$refs.modal
                 .confirm( '你的训练进度将会被清除,此操作不可恢复.', '确定要重新开始吗?' )
                 .then( this.restart, ()=> {} );
       }

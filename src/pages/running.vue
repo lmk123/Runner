@@ -1,30 +1,25 @@
 <template>
-  <div class="page">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="left">
-          <a class="link" v-touch:tap.prevent="back">
-            <i class="icon icon-back"></i>
-            <span>返回</span>
-          </a>
-        </div>
-        <div class="center" v-text="title"></div>
-      </div>
-    </div>
-    <div class="page-content">
-      <div class="content-block">
-        <div class="content-block-inner">
-          <p>
-            你正在进行第 {{nextWeek}} 周的第 {{nextTrainNo}} 次训练.
-          </p>
-          <p v-if="train">
-            训练内容:<s-train :train="train" v-if="train"></s-train>
-          </p>
-        </div>
-      </div>
+  <f7-page>
+    <f7-navbar type="fixed">
+      <a class="link" slot="left" v-touch:tap.prevent="back">
+        <i class="icon icon-back"></i>
+        <span>返回</span>
+      </a>
+      <span slot="center" v-text="title"></span>
+    </f7-navbar>
+    <f7-page-content>
+      <f7-content-block inner>
+        <p>
+          你正在进行第 {{nextWeek}} 周的第 {{nextTrainNo}} 次训练.
+        </p>
+        <p v-if="train">
+          训练内容:
+          <s-train :train="train" v-if="train"></s-train>
+        </p>
+      </f7-content-block>
       <router-view></router-view>
-    </div>
-  </div>
+    </f7-page-content>
+  </f7-page>
 </template>
 
 <script type="text/babel">
@@ -63,6 +58,7 @@
         data.train = null;
         data._jumpTo = '/running/choose';
       }
+      console.log( data );
 
       return data;
     },

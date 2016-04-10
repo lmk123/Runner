@@ -1,5 +1,5 @@
 <template>
-  <div class="content-block-title">选择适合你的训练</div>
+  <f7-content-block title="选择适合你的训练"></f7-content-block>
   <div class="list-block media-list">
     <ul>
       <li v-for="train in $parent.trains">

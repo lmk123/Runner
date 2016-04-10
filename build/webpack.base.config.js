@@ -12,7 +12,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /node_modules(?!(\/|\\?\\)(vue-framework7)\1)/,
         loader: 'babel-loader',
         query: {
           presets: [ 'es2015', 'stage-3' ],

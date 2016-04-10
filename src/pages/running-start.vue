@@ -1,16 +1,15 @@
 <template>
-  <div class="content-block">
+  <f7-content-block>
     训练之前,请做 5~10 分钟的热身运动,之后点击下面的按钮开始跑步.
-  </div>
-  <div class="content-block-title">热身计时</div>
-  <div class="content-block">
-    <div class="content-block-inner">
-      <s-timer type="countup" auto v-ref:timer></s-timer>
-    </div>
-  </div>
-  <div class="content-block">
+  </f7-content-block>
+
+  <f7-content-block title="热身计时" inner>
+    <s-timer type="countup" auto v-ref:timer></s-timer>
+  </f7-content-block>
+
+  <f7-content-block>
     <input type="button" class="button" value="开始跑步" v-touch:tap="run" />
-  </div>
+  </f7-content-block>
 </template>
 
 <script type="text/babel">
@@ -25,11 +24,9 @@
         const { timer } = this.$refs;
         if ( timer.min < 5 ) {
           timer.pause();
-          this.$root
+          this.$root.$refs.modal
                   .confirm( '跑前热身至少持续 5 分钟,确认要去跑步吗?' )
-                  .then( ()=> {
-                    this.$route.router.go( '/running/timer' );
-                  }, timer.continue );
+                  .then( ( ok )=> ok ? this.$route.router.go( '/running/timer' ) : timer.continue() );
         } else {
           this.$route.router.go( '/running/timer' );
         }

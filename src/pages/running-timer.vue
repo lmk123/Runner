@@ -1,12 +1,10 @@
 <template>
-  <div class="content-block-title">当前进度</div>
-  <div class="content-block">
-    <div class="content-block-inner">
-      第 {{currentRepeat}} 次,{{$parent.train.steps[currentStep].name}} {{$parent.train.steps[currentStep].time}} 分钟,还剩
-      <s-timer v-ref:timer></s-timer>
-    </div>
-  </div>
-  <div class="content-block">
+  <f7-content-block title="当前进度" inner>
+    第 {{currentRepeat}} 次,{{$parent.train.steps[currentStep].name}} {{$parent.train.steps[currentStep].time}} 分钟,还剩
+    <s-timer v-ref:timer></s-timer>
+  </f7-content-block>
+
+  <f7-content-block>
     <p v-show="paused">
       <input type="button" class="button" value="继续" v-touch:tap="continue" />
     </p>
@@ -19,7 +17,7 @@
     <p>
       <a class="button" v-link="'/running/end'">跳过</a>
     </p>
-  </div>
+  </f7-content-block>
 </template>
 
 <script type="text/babel">
@@ -47,13 +45,14 @@
       },
       stop() {
         this.$refs.timer.pause();
-        this.$root
+        this.$root.$refs.modal
                 .confirm( '确定要中止这次训练吗?' )
-                .then( ()=>this.$route.router.go( '/' ), this.$refs.timer.continue );
+                .then( ( ok )=> ok ? this.$route.router.go( '/' ) : this.$refs.timer.continue() );
       }
     },
     ready() {
       const { train } = this.$parent;
+      console.log(this.$parent);
       if ( !train ) { return; }
       const { steps } = train;
       const stepLength = steps.length;
