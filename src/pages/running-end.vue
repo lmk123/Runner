@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="content-block">
-    <input type="button" class="button" value="热身完成" @click="finish" />
+    <input type="button" class="button" value="热身完成" v-touch:tap="finish" />
   </div>
 </template>
 

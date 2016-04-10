@@ -6,8 +6,8 @@
       <div class="modal-text" v-text="modal.text"></div>
     </div>
     <div class="modal-buttons modal-buttons-2">
-      <span class="modal-button" @click="$emit('confirm',false)">取消</span>
-      <span class="modal-button modal-button-bold" @click="$emit('confirm',true)">确定</span>
+      <span class="modal-button" v-touch:tap="$emit('confirm',false)">取消</span>
+      <span class="modal-button modal-button-bold" v-touch:tap="$emit('confirm',true)">确定</span>
     </div>
   </div>
   <div class="statusbar-overlay"></div>

@@ -3,7 +3,7 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="left">
-          <a class="link" @click.prevent="back">
+          <a class="link" v-touch:tap.prevent="back">
             <i class="icon icon-back"></i>
             <span>返回</span>
           </a>

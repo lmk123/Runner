@@ -21,7 +21,7 @@
         <p>
           <a class="button" v-if="!lastest" v-link="'/running'">开始训练</a>
         </p>
-        <input type="button" class="button" value="重新开始" v-if="week" @click="confirmRestart" />
+        <input type="button" class="button" value="重新开始" v-if="week" v-touch:tap="confirmRestart" />
       </div>
     </div>
   </div>
