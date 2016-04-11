@@ -2,6 +2,8 @@ const webpack = require( 'webpack' ),
   HtmlWebpackPlugin = require( 'html-webpack-plugin' ),
   ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
+require( 'fs-extra' ).removeSync('./dist');
+
 module.exports = {
   entry: './src/index',
   output: {
