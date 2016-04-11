@@ -10,7 +10,6 @@ export default new Vuex.Store( {
   middlewares: [
     {
       onMutation ( mutation, state ) {
-        console.log( mutation, state );
         if ( mutation.type === 'setProcess' ) {
           localStorage.process = JSON.stringify( state.process );
         }
