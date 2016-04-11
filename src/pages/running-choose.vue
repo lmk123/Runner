@@ -3,7 +3,7 @@
   <div class="list-block media-list">
     <ul>
       <li v-for="train in $parent.trains">
-        <a class="item-link item-content" v-touch:tap="choose(train)">
+        <a class="item-link item-content" @click="choose(train)">
           <div class="item-inner">
             <div class="item-title-row">
               <div class="item-title" v-text="train.name"></div>

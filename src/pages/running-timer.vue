@@ -6,10 +6,10 @@
 
   <f7-content-block>
     <p v-show="paused">
-      <input type="button" class="button" value="继续" v-touch:tap="continue" />
+      <input type="button" class="button" value="继续" @click="continue" />
     </p>
     <p v-else>
-      <input type="button" class="button" value="暂停" v-touch:tap="pause" />
+      <input type="button" class="button" value="暂停" @click="pause" />
     </p>
     <p>
       <input type="button" class="button" value="停止训练" @click="stop" />

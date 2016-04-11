@@ -1,7 +1,7 @@
 <template>
   <f7-page>
     <f7-navbar type="fixed">
-      <a class="link" slot="left" v-touch:tap.prevent="back">
+      <a class="link" slot="left" @click.prevent="back">
         <i class="icon icon-back"></i>
         <span>返回</span>
       </a>
