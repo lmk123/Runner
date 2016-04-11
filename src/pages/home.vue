@@ -17,7 +17,7 @@
       </f7-content-block>
       <f7-content-block>
         <p>
-          <a class="button" v-if="!lastest" v-link="'/running'">开始训练</a>
+          <a class="button" v-if="!lastest" v-touch:tap="start">开始训练</a>
         </p>
       </f7-content-block>
     </f7-page-content>
@@ -37,6 +37,18 @@
     computed: {
       lastest() {
         return plan13.plans.length === this.process.week && plan13.plans[ this.process.week - 1 ].length === this.process.no;
+      }
+    },
+    methods: {
+      async start() {
+        const lastDate = this.process.date;
+        if ( Date.now() - lastDate < 1000 * 60 * 60 * 24 ) {
+          const ok = await this.$root.$refs.modal.confirm( '每次训练之间最好相隔 24 小时以保证身体得到了足够的休息.确认要开始训练吗?' );
+          if ( !ok ) {
+            return;
+          }
+        }
+        this.$route.router.go( '/running' );
       }
     }
   };

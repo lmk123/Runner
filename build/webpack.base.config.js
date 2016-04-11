@@ -8,6 +8,12 @@ module.exports = {
     path: './dist',
     filename: '[name].js'
   },
+
+  // 这个配置项是给 vue-loader 的
+  babel: {
+    presets: [ 'es2015', 'stage-3' ],
+    plugins: [ 'transform-runtime' ]
+  },
   module: {
     loaders: [
       {
