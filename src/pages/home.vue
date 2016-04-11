@@ -26,6 +26,7 @@
 
 <script type="text/babel">
   import { process } from '../vuex/getters';
+  import noSleep from '../others/nosleep';
   import plan13 from '../others/plan';
 
   export default {
