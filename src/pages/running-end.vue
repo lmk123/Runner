@@ -11,11 +11,9 @@
 </template>
 
 <script type="text/babel">
-  import { setTrain } from '../vuex/actions';
   import { running } from '../vuex/getters';
   export default {
     vuex: {
-      actions: { setTrain },
       getters: { running }
     },
     route: {
