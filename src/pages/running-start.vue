@@ -8,15 +8,21 @@
   </f7-content-block>
 
   <f7-content-block>
-    <input type="button" class="button" value="开始跑步" v-touch:tap="run" />
+    <input type="button" class="button" value="开始跑步" @click="run" />
   </f7-content-block>
 </template>
 
 <script type="text/babel">
+  import { running } from '../vuex/getters';
   export default {
+    vuex: {
+      getters: {
+        running
+      }
+    },
     route: {
       activate() {
-        this.$parent.title = '跑前热身';
+        this.running.title = '跑前热身';
       }
     },
     methods: {

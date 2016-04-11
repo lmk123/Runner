@@ -12,6 +12,9 @@ router.map( {
   '/running': {
     component: require( './running.vue' ),
     subRoutes: {
+      '/': {
+        component: require( './running-index.vue' )
+      },
       '/choose': {
         component: require( './running-choose.vue' )
       },

@@ -1,7 +1,10 @@
-export function week( state ) {
-  return state.week;
+/**
+ * 获取整个 13 周训练的进度
+ */
+export function process( state ) {
+  return state.process;
 }
 
-export function no( state ) {
-  return state.no;
+export function running( state ) {
+  return state.running;
 }

@@ -10,7 +10,8 @@
 </template>
 
 <script type="text/babel">
-  import store from './vuex';
+  import store from './vuex/store';
+
   export default {
     store,
     replace: false

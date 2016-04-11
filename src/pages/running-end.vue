@@ -6,27 +6,28 @@
     <s-timer type="countup" auto v-ref:timer></s-timer>
   </f7-content-block>
   <f7-content-block>
-    <input type="button" class="button" value="热身完成" v-touch:tap="finish" />
+    <input type="button" class="button" value="热身完成" @click="finish" />
   </f7-content-block>
 </template>
 
 <script type="text/babel">
   import { setTrain } from '../vuex/actions';
-
+  import { running } from '../vuex/getters';
   export default {
     vuex: {
-      actions: { setTrain }
+      actions: { setTrain },
+      getters: { running }
     },
     route: {
       activate() {
-        this.$parent.title = '跑后热身';
+        this.running.title = '跑后热身';
       }
     },
     methods: {
       go() {
-        this.setTrain( {
-          week: this.$parent.nextWeek,
-          no: this.$parent.nextTrainNo,
+        this.$store.dispatch( 'setProcess', {
+          week: this.running.week,
+          no: this.running.no,
           date: Date.now()
         } );
         this.$route.router.go( '/' );
@@ -37,8 +38,8 @@
         if ( timer.min < 5 ) {
           timer.pause();
           this.$root.$refs.modal
-                  .confirm( '跑后热身至少持续 5 分钟,确认要去跑步吗?' )
-                  .then( this.go, timer.continue );
+                  .confirm( '跑后热身至少持续 5 分钟,确认要结束热身吗?' )
+                  .then( ( ok )=> ok ? this.go() : timer.continue() );
         } else {
           this.go();
         }

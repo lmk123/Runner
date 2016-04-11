@@ -1,6 +1,6 @@
 <template>
   <f7-content-block title="当前进度" inner>
-    第 {{currentRepeat}} 次,{{$parent.train.steps[currentStep].name}} {{$parent.train.steps[currentStep].time}} 分钟,还剩
+    第 {{currentRepeat}} 次,{{running.train.steps[currentStep].name}} {{running.train.steps[currentStep].time}} 分钟,还剩
     <s-timer v-ref:timer></s-timer>
   </f7-content-block>
 
@@ -12,7 +12,7 @@
       <input type="button" class="button" value="暂停" v-touch:tap="pause" />
     </p>
     <p>
-      <input type="button" class="button" value="停止训练" v-touch:tap="stop" />
+      <input type="button" class="button" value="停止训练" @click="stop" />
     </p>
     <p>
       <a class="button" v-link="'/running/end'">跳过</a>
@@ -21,10 +21,16 @@
 </template>
 
 <script type="text/babel">
+  import { running } from '../vuex/getters';
   export default {
+    vuex: {
+      getters: {
+        running
+      }
+    },
     route: {
       activate() {
-        this.$parent.title = '跑步吧!';
+        this.running.title = '跑步吧!';
       }
     },
     data() {
@@ -51,8 +57,7 @@
       }
     },
     ready() {
-      const { train } = this.$parent;
-      console.log(this.$parent);
+      const { train } = this.running;
       if ( !train ) { return; }
       const { steps } = train;
       const stepLength = steps.length;
