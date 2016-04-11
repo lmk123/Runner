@@ -6,7 +6,7 @@
     <s-timer type="countup" auto v-ref:timer></s-timer>
   </f7-content-block>
   <f7-content-block>
-    <input type="button" class="button" value="热身完成" @click="finish" />
+    <input type="button" class="button" value="热身完成" v-touch:tap="finish" />
   </f7-content-block>
 </template>
 

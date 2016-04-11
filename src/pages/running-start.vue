@@ -8,7 +8,7 @@
   </f7-content-block>
 
   <f7-content-block>
-    <input type="button" class="button" value="开始跑步" @click="run" />
+    <input type="button" class="button" value="开始跑步" v-touch:tap="run" />
   </f7-content-block>
 </template>
 
