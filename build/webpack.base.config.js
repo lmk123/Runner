@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index',
   output: {
     path: './dist',
-    filename: '[name].js'
+    filename: '[hash].js'
   },
   module: {
     loaders: [
@@ -23,7 +23,7 @@ module.exports = {
         test: /\.(woff2?|ttf|png|svg)$/,
         loader: 'file-loader',
         query: {
-          name: '[name].[ext]'
+          name: '[hash].[ext]'
         }
       },
       {
@@ -54,7 +54,7 @@ module.exports = {
     new HtmlWebpackPlugin( {
       template: './src/index.html'
     } ),
-    new ExtractTextPlugin( '[name].css' )
+    new ExtractTextPlugin( '[hash].css' )
   ]
 };
 
