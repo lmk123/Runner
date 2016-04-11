@@ -12,9 +12,9 @@
         <p>
           你正在进行第 {{running.week}} 周的第 {{running.no}} 次训练.
         </p>
-        <p v-if="train">
+        <p v-if="running.train">
           训练内容:
-          <s-train :train="running.train" v-if="running.train"></s-train>
+          <s-train :train="running.train"></s-train>
         </p>
       </f7-content-block>
       <router-view></router-view>
