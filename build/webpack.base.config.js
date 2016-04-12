@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/index',
   output: {
     path: './dist',
-    filename: '[hash].js'
+    filename: '[name]-[hash:10].js'
   },
 
   // 这个配置项是给 vue-loader 的
@@ -31,7 +31,7 @@ module.exports = {
         test: /\.(woff2?|ttf|png|svg)$/,
         loader: 'file-loader',
         query: {
-          name: '[hash].[ext]'
+          name: '[name]-[hash:10].[ext]'
         }
       },
       {
@@ -62,7 +62,7 @@ module.exports = {
     new HtmlWebpackPlugin( {
       template: './src/index.html'
     } ),
-    new ExtractTextPlugin( '[hash].css' )
+    new ExtractTextPlugin( '[name]-[hash:10].css' )
   ]
 };
 

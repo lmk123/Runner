@@ -15,7 +15,7 @@
       <input type="button" class="button" value="停止训练" v-touch:tap="stop" />
     </p>
     <p>
-      <a class="button" v-link="'/running/end'">跳过</a>
+      <a class="button" v-link="'/running/end'">跳过(仅限开发版使用)</a>
     </p>
   </f7-content-block>
 </template>
