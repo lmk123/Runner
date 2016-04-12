@@ -6,6 +6,8 @@
         <span>返回</span>
       </a>
       <span slot="center" v-text="running.title"></span>
+      <!--用一个丑陋的办法让 slot=center 居中-->
+      <span slot="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </f7-navbar>
     <f7-page-content>
       <f7-content-block inner>
