@@ -1,4 +1,4 @@
-// import 'babel-polyfill';
+import 'babel-polyfill';
 import Vue from 'vue';
 import VueTouch from 'vue-touch';
 import 'vue-framework7';
