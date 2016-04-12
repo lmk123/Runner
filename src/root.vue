@@ -1,4 +1,5 @@
 <template>
+  <fork-me></fork-me>
   <f7-modal v-ref:modal></f7-modal>
   <f7-views>
     <f7-view>
@@ -14,7 +15,10 @@
 
   export default {
     store,
-    replace: false
+    replace: false,
+    components: {
+      'fork-me': require( './components/fork-me.vue' )
+    }
   };
 </script>
 
