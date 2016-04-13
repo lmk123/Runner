@@ -12,6 +12,7 @@
 
 <script type="text/babel">
   import { running } from '../vuex/getters';
+  import { disable } from '../others/nosleep';
   export default {
     vuex: {
       getters: { running }
@@ -31,17 +32,18 @@
         this.$route.router.go( '/' );
       },
 
-      finish() {
+      async finish() {
         const { timer } = this.$refs;
         if ( timer.min < 5 ) {
           timer.pause();
-          this.$root.$refs.modal
-                  .confirm( '跑后热身至少持续 5 分钟,确认要结束热身吗?' )
-                  .then( ( ok )=> ok ? this.go() : timer.continue() );
-        } else {
-          this.go();
+          const ok = await this.$root.$refs.modal.confirm( '跑后热身至少持续 5 分钟,确认要结束热身吗?' );
+          if ( !ok ) {
+            timer.continue();
+            return;
+          }
         }
-
+        disable();
+        this.go();
       }
     }
   };
