@@ -1,3 +1,14 @@
 import NoSleep from 'nosleep.js';
 
-export default new NoSleep;
+let noSleep;
+
+export function enable() {
+  if ( !noSleep ) {
+    noSleep = new NoSleep();
+  }
+  noSleep.enable();
+}
+
+export function disable() {
+  noSleep && noSleep.disable();
+}
