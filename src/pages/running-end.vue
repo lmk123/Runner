@@ -12,7 +12,6 @@
 
 <script type="text/babel">
   import { running } from '../vuex/getters';
-  import { disable } from '../others/nosleep';
   export default {
     vuex: {
       getters: { running }
@@ -42,7 +41,6 @@
             return;
           }
         }
-        disable();
         this.go();
       }
     }

@@ -26,7 +26,6 @@
 
 <script type="text/babel">
   import { process } from '../vuex/getters';
-  import {enable} from '../others/nosleep';
   import plan13 from '../others/plan';
 
   export default {
@@ -42,15 +41,14 @@
     },
     methods: {
       async start() {
-        enable();
         const lastDate = this.process.date;
         if ( Date.now() - lastDate < 1000 * 60 * 60 * 24 ) {
           const ok = await this.$root.$refs.modal.confirm( '每次训练之间最好相隔 24 小时以保证身体得到了足够的休息.确认要开始训练吗?' );
           if ( !ok ) {
+            disable();
             return;
           }
         }
-        await this.$root.$refs.modal.alert( '训练过程中,手机屏幕会保持常亮.请不要锁屏或者回到主屏幕,否则无法正常计时.' );
         this.$route.router.go( '/running' );
       }
     }
