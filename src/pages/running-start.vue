@@ -26,16 +26,17 @@
       }
     },
     methods: {
-      run() {
+      async run() {
         const { timer } = this.$refs;
         if ( timer.min < 5 ) {
           timer.pause();
-          this.$root.$refs.modal
-                  .confirm( '跑前热身至少持续 5 分钟,确认要去跑步吗?' )
-                  .then( ( ok )=> ok ? this.$route.router.go( '/running/timer' ) : timer.continue() );
-        } else {
-          this.$route.router.go( '/running/timer' );
+          const ok = this.$root.$refs.modal.confirm( '跑前热身至少持续 5 分钟,确认要去跑步吗?' );
+          if ( !ok ) {
+            timer.continue();
+            return;
+          }
         }
+        this.$route.router.go( '/running/timer' );
       }
     }
   };

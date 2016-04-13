@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline --open --config build/webpack.dev.config.js",
     "build": "webpack --config build/webpack.build.config.js",
-    "deploy": "gh-pages -d dist -o github -a"
+    "deploy": "npm run build && gh-pages -d dist -o github -a"
   },
   "dependencies": {
     "vue": "^1.0.21",
