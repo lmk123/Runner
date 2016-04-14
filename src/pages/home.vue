@@ -45,7 +45,6 @@
         if ( Date.now() - lastDate < 1000 * 60 * 60 * 24 ) {
           const ok = await this.$root.$refs.modal.confirm( '每次训练之间最好相隔 24 小时以保证身体得到了足够的休息.确认要开始训练吗?' );
           if ( !ok ) {
-            disable();
             return;
           }
         }
