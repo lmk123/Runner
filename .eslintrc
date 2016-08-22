@@ -1,0 +1,15 @@
+{
+  "globals": {
+    "Vue": false,
+    "VueRouter": false,
+    "Vuex": false,
+    "_": false,
+    "FastClick": false
+  },
+  "plugins": [
+    "html"
+  ],
+  "extends": [
+    "standard"
+  ]
+}
