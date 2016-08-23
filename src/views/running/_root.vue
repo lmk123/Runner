@@ -1,5 +1,12 @@
 <template>
-  <div class="page">
+  <div class="page navbar-fixed">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div></div>
+        <div class="center">训练中</div>
+        <div></div>
+      </div>
+    </div>
     <div class="page-content">
       <div class="content-block">
         <div class="content-block-inner">

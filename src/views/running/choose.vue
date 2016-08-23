@@ -8,8 +8,7 @@
         <div class="item-inner">
           <div class="item-title-row">
             <div class="item-title">{{ train.name || '常规计划' }}</div>
-            <!-- TODO 这里可以写上计划的总时间 -->
-            <!--<div class="item-after">$15</div>-->
+            <div class="item-after">{{ getMin(train) }}</div>
           </div>
           <div class="item-subtitle">{{ getDes(train) }}</div>
         </div>
@@ -23,6 +22,7 @@
   import { nextTrain } from '../../vuex/getters'
   import { startTrain } from '../../vuex/actions'
   import getDes from '../../utils/getDescription'
+  import getMinutes from '../../utils/getMinutes'
   export default {
     vuex: {
       getters: { nextTrain },
@@ -40,7 +40,12 @@
         this.startTrain(index)
         this.$router.replace({ name: 'before' })
       },
-      getDes
+      getDes,
+      getMin (train) {
+        const min = getMinutes(train)
+        if (!min) return ''
+        return min + 10 + ' 分钟'
+      }
     }
   }
 </script>

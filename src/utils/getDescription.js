@@ -9,7 +9,7 @@ export default function (train) {
     return train.description
   }
   let d = train.steps.reduce((prev, step) => {
-    return prev + `${step.name} ${step.time} 分钟,`
+    return prev + `${step.name} ${step.time} 分钟, `
   }, '')
   if (train.repeat !== 1) {
     d += `重复 ${train.repeat} 次`
