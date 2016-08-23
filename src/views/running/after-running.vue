@@ -18,7 +18,7 @@
   import { finishTrain } from '../../vuex/actions'
   export default {
     vuex: {
-      getters: { nextTrain },
+      getters: { nextTrain, isDev },
       actions: { finishTrain }
     },
     data () {
