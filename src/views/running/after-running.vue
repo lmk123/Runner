@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import { nextTrain } from '../../vuex/getters'
+  import { nextTrain, isDev } from '../../vuex/getters'
   import { finishTrain } from '../../vuex/actions'
   export default {
     vuex: {
@@ -34,20 +34,15 @@
     },
     methods: {
       run () {
-        if (this.done) {
+        if (this.isDev && !this.done) window.alert('开发模式下可跳过跑后热身。')
+        if (this.isDev || this.done) {
           this.finishTrain()
           this.$router.replace({ name: 'done' })
           return
         }
         this.$refs.timer.pause()
         window.alert('热身运动至少要持续 5 分钟。')
-        if (process.env.NODE_ENV === 'development') {
-          window.alert('开发模式下直接跳过')
-          this.finishTrain()
-          this.$router.replace({ name: 'done' })
-        } else {
-          this.$refs.timer.continue()
-        }
+        this.$refs.timer.continue()
       }
     },
     ready () {

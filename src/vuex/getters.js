@@ -1,6 +1,15 @@
 import plan from '../plan'
 
 /**
+ * 应用是否是开发模式
+ * @param state
+ * @return {Boolean}
+ */
+export function isDev (state) {
+  return state.app.dev
+}
+
+/**
  * 返回用户最后一次训练纪录。
  * @param state
  */

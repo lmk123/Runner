@@ -14,7 +14,11 @@
 </template>
 
 <script>
+  import { isDev } from '../../vuex/getters'
   export default {
+    vuex: {
+      getters: { isDev }
+    },
     data () {
       return {
         m: 0,
@@ -28,18 +32,14 @@
     },
     methods: {
       run () {
-        if (this.done) {
+        if (this.isDev && !this.done) window.alert('开发模式下可跳过跑前热身。')
+        if (this.isDev || this.done) {
           this.$router.replace({ name: 'run' })
           return
         }
         this.$refs.timer.pause()
         window.alert('热身运动至少要持续 5 分钟。')
-        if (process.env.NODE_ENV === 'development') {
-          window.alert('开发模式下直接跳过')
-          this.$router.replace({ name: 'run' })
-        } else {
-          this.$refs.timer.continue()
-        }
+        this.$refs.timer.continue()
       }
     },
     ready () {

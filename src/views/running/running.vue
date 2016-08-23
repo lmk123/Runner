@@ -18,16 +18,16 @@
       </a>
     </p>
     <p>
-      <a class="button" v-show="_showJump" @click.prevent="done = true">跳过(仅限开发者模式)</a>
+      <a class="button" v-show="isDev" @click.prevent="done = true">跳过(仅限开发者模式)</a>
     </p>
   </div>
 </template>
 
 <script>
-  import { currentTrain } from '../../vuex/getters'
+  import { currentTrain, isDev } from '../../vuex/getters'
   export default {
     vuex: {
-      getters: { currentTrain }
+      getters: { currentTrain, isDev }
     },
     route: {
       activate () {
@@ -37,7 +37,6 @@
       }
     },
     data () {
-      this._showJump = process.env.NODE_ENV === 'development'
       return {
         m: 0,
         s: 0,
