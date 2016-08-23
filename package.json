@@ -7,7 +7,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline --open --config build/webpack.dev.config.js",
     "build": "webpack --config build/webpack.build.config.js",
-    "lint": "eslint --ignore-pattern '/dist/' '**/*.{js,vue}'"
+    "lint": "eslint --ignore-pattern '/dist/' '**/*.{js,vue}'",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "vue": "1.0.26",
@@ -19,6 +20,8 @@
     "framework7": "1.4.2"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "3.0.1",
+    "gh-pages": "0.11.0",
     "uglify-js": "2.7.3",
     "fs-extra": "0.30.0",
     "openpack": "1.0.0",
