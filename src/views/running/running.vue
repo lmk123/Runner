@@ -1,12 +1,9 @@
 <template>
-  <div class="content-block-title">跑步吧</div>
+  <div class="content-block-title">跑步计时</div>
   <div class="content-block">
     <div class="content-block-inner">
-      <p v-if="step">
-        第 {{ repeat }} 组: {{ step.name }} {{ step.time }} 分钟
-      </p>
       <p>
-        <timer v-ref:timer :minutes.sync="m" :seconds.sync="s" backward @end="onEnd"></timer>
+        第 {{ repeat }} 组: <span v-if="step">{{ step.name }} {{ step.time }} 分钟, </span>剩余 <timer v-ref:timer :minutes.sync="m" :seconds.sync="s" backward @end="onEnd"></timer>
       </p>
     </div>
   </div>

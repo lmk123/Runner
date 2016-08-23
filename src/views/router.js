@@ -26,10 +26,6 @@ router.map({
         component: require('./running/after-running.vue')
       }
     }
-  },
-  '/done': {
-    name: 'done',
-    component: require('./done.vue')
   }
 })
 

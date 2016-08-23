@@ -1,5 +1,5 @@
 <template>
-  <div class="content-block-title">选择训练计划</div>
+  <div class="content-block-title">选择适合你的训练</div>
   <div class="list-block media-list">
     <ul>
       <li class="item-link item-content"
@@ -11,11 +11,11 @@
             <!-- TODO 这里可以写上计划的总时间 -->
             <!--<div class="item-after">$15</div>-->
           </div>
-          <div class="item-text">{{ getDes(train) }}</div>
+          <div class="item-subtitle">{{ getDes(train) }}</div>
         </div>
       </li>
     </ul>
-    <div class="list-block-label">当前计划有多个选项, 请选择适合你的计划。</div>
+    <div class="list-block-label">此训练包含多个选项, 请根据自身状况选择适合自己的选项。</div>
   </div>
 </template>
 
